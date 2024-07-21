@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subcategories",
+  "info": {
+    "singularName": "subcategory",
+    "pluralName": "subcategories",
+    "displayName": "subcategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "bots": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bot.bot",
+      "mappedBy": "subcategory"
+    }
+  }
+}

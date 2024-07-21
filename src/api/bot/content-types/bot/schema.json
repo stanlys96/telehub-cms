@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bots",
+  "info": {
+    "singularName": "bot",
+    "pluralName": "bots",
+    "displayName": "bot",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "chain": {
+      "type": "string"
+    },
+    "members": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "string"
+    },
+    "reviews": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "score": {
+      "type": "integer"
+    },
+    "subcategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "bots"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "bots"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
