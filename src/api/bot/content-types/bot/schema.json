@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "chain": {
-      "type": "string"
-    },
     "members": {
       "type": "string"
     },
@@ -55,6 +52,12 @@
         "videos",
         "audios"
       ]
+    },
+    "chain": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chain.chain",
+      "inversedBy": "bots"
     }
   }
 }

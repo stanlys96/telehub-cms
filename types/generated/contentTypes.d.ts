@@ -801,7 +801,6 @@ export interface ApiBotBot extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String;
-    chain: Attribute.String;
     members: Attribute.String;
     rating: Attribute.String;
     reviews: Attribute.String;
@@ -818,6 +817,7 @@ export interface ApiBotBot extends Schema.CollectionType {
       'api::category.category'
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    chain: Attribute.Relation<'api::bot.bot', 'manyToOne', 'api::chain.chain'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
@@ -855,6 +855,38 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiChainChain extends Schema.CollectionType {
+  collectionName: 'chains';
+  info: {
+    singularName: 'chain';
+    pluralName: 'chains';
+    displayName: 'chain';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    chainId: Attribute.Integer;
+    bots: Attribute.Relation<'api::chain.chain', 'oneToMany', 'api::bot.bot'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::chain.chain',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::chain.chain',
       'oneToOne',
       'admin::user'
     > &
@@ -919,6 +951,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::bot.bot': ApiBotBot;
       'api::category.category': ApiCategoryCategory;
+      'api::chain.chain': ApiChainChain;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
     }
   }
