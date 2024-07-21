@@ -802,7 +802,6 @@ export interface ApiBotBot extends Schema.CollectionType {
   attributes: {
     title: Attribute.String;
     members: Attribute.String;
-    rating: Attribute.String;
     reviews: Attribute.String;
     description: Attribute.String;
     score: Attribute.Integer;
@@ -818,6 +817,7 @@ export interface ApiBotBot extends Schema.CollectionType {
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     chain: Attribute.Relation<'api::bot.bot', 'manyToOne', 'api::chain.chain'>;
+    rating: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &

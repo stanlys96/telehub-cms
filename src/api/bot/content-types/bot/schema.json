@@ -18,9 +18,6 @@
     "members": {
       "type": "string"
     },
-    "rating": {
-      "type": "string"
-    },
     "reviews": {
       "type": "string"
     },
@@ -58,6 +55,9 @@
       "relation": "manyToOne",
       "target": "api::chain.chain",
       "inversedBy": "bots"
+    },
+    "rating": {
+      "type": "integer"
     }
   }
 }
