@@ -881,6 +881,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'oneToMany',
       'api::bot.bot'
     >;
+    textColor: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
