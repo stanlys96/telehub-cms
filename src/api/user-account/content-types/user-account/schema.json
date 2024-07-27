@@ -32,6 +32,12 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "user_account"
+    },
+    "reports": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::report.report",
+      "mappedBy": "user_accounts"
     }
   }
 }

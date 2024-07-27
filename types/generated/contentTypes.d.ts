@@ -830,6 +830,11 @@ export interface ApiBotBot extends Schema.CollectionType {
       'oneToMany',
       'api::rating.rating'
     >;
+    reports: Attribute.Relation<
+      'api::bot.bot',
+      'manyToMany',
+      'api::report.report'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
@@ -915,7 +920,7 @@ export interface ApiRatingRating extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     bot: Attribute.Relation<'api::rating.rating', 'manyToOne', 'api::bot.bot'>;
@@ -927,6 +932,7 @@ export interface ApiRatingRating extends Schema.CollectionType {
     rating: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::rating.rating',
       'oneToOne',
@@ -935,6 +941,46 @@ export interface ApiRatingRating extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReportReport extends Schema.CollectionType {
+  collectionName: 'reports';
+  info: {
+    singularName: 'report';
+    pluralName: 'reports';
+    displayName: 'report';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bots: Attribute.Relation<
+      'api::report.report',
+      'manyToMany',
+      'api::bot.bot'
+    >;
+    user_accounts: Attribute.Relation<
+      'api::report.report',
+      'manyToMany',
+      'api::user-account.user-account'
+    >;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::report.report',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::report.report',
       'oneToOne',
       'admin::user'
     > &
@@ -1004,6 +1050,11 @@ export interface ApiUserAccountUserAccount extends Schema.CollectionType {
       'oneToMany',
       'api::rating.rating'
     >;
+    reports: Attribute.Relation<
+      'api::user-account.user-account',
+      'manyToMany',
+      'api::report.report'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1043,6 +1094,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::chain.chain': ApiChainChain;
       'api::rating.rating': ApiRatingRating;
+      'api::report.report': ApiReportReport;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::user-account.user-account': ApiUserAccountUserAccount;
     }

@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reports",
+  "info": {
+    "singularName": "report",
+    "pluralName": "reports",
+    "displayName": "report"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bots": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::bot.bot",
+      "inversedBy": "reports"
+    },
+    "user_accounts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::user-account.user-account",
+      "inversedBy": "reports"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

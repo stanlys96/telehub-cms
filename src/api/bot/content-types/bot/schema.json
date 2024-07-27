@@ -76,6 +76,12 @@
       "relation": "oneToMany",
       "target": "api::rating.rating",
       "mappedBy": "bot"
+    },
+    "reports": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::report.report",
+      "mappedBy": "bots"
     }
   }
 }
