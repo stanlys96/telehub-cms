@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_accounts",
+  "info": {
+    "singularName": "user-account",
+    "pluralName": "user-accounts",
+    "displayName": "user-account",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "name": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "bots": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::bot.bot",
+      "mappedBy": "user_account"
+    }
+  }
+}

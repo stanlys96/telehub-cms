@@ -58,6 +58,12 @@
     },
     "rating": {
       "type": "integer"
+    },
+    "user_account": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-account.user-account",
+      "inversedBy": "bots"
     }
   }
 }

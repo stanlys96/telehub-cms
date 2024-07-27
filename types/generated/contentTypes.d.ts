@@ -818,6 +818,11 @@ export interface ApiBotBot extends Schema.CollectionType {
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     chain: Attribute.Relation<'api::bot.bot', 'manyToOne', 'api::chain.chain'>;
     rating: Attribute.Integer;
+    user_account: Attribute.Relation<
+      'api::bot.bot',
+      'manyToOne',
+      'api::user-account.user-account'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
@@ -931,6 +936,43 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiUserAccountUserAccount extends Schema.CollectionType {
+  collectionName: 'user_accounts';
+  info: {
+    singularName: 'user-account';
+    pluralName: 'user-accounts';
+    displayName: 'user-account';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    email: Attribute.Email;
+    name: Attribute.String;
+    imageUrl: Attribute.String;
+    bots: Attribute.Relation<
+      'api::user-account.user-account',
+      'oneToMany',
+      'api::bot.bot'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::user-account.user-account',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::user-account.user-account',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -953,6 +995,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::chain.chain': ApiChainChain;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
+      'api::user-account.user-account': ApiUserAccountUserAccount;
     }
   }
 }
