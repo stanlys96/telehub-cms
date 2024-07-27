@@ -912,9 +912,10 @@ export interface ApiRatingRating extends Schema.CollectionType {
     singularName: 'rating';
     pluralName: 'ratings';
     displayName: 'rating';
+    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     bot: Attribute.Relation<'api::rating.rating', 'manyToOne', 'api::bot.bot'>;
@@ -926,7 +927,6 @@ export interface ApiRatingRating extends Schema.CollectionType {
     rating: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::rating.rating',
       'oneToOne',

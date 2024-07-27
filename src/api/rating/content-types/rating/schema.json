@@ -4,10 +4,11 @@
   "info": {
     "singularName": "rating",
     "pluralName": "ratings",
-    "displayName": "rating"
+    "displayName": "rating",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
