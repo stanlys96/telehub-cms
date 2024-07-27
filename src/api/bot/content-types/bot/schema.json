@@ -56,8 +56,8 @@
       "target": "api::chain.chain",
       "inversedBy": "bots"
     },
-    "rating": {
-      "type": "integer"
+    "total_rating": {
+      "type": "float"
     },
     "user_account": {
       "type": "relation",
@@ -70,6 +70,12 @@
     },
     "published": {
       "type": "boolean"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "bot"
     }
   }
 }

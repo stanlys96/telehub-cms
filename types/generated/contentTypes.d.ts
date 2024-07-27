@@ -817,7 +817,7 @@ export interface ApiBotBot extends Schema.CollectionType {
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     chain: Attribute.Relation<'api::bot.bot', 'manyToOne', 'api::chain.chain'>;
-    rating: Attribute.Integer;
+    total_rating: Attribute.Float;
     user_account: Attribute.Relation<
       'api::bot.bot',
       'manyToOne',
@@ -825,6 +825,11 @@ export interface ApiBotBot extends Schema.CollectionType {
     >;
     username: Attribute.String;
     published: Attribute.Boolean;
+    ratings: Attribute.Relation<
+      'api::bot.bot',
+      'oneToMany',
+      'api::rating.rating'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
@@ -901,6 +906,42 @@ export interface ApiChainChain extends Schema.CollectionType {
   };
 }
 
+export interface ApiRatingRating extends Schema.CollectionType {
+  collectionName: 'ratings';
+  info: {
+    singularName: 'rating';
+    pluralName: 'ratings';
+    displayName: 'rating';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bot: Attribute.Relation<'api::rating.rating', 'manyToOne', 'api::bot.bot'>;
+    user_account: Attribute.Relation<
+      'api::rating.rating',
+      'manyToOne',
+      'api::user-account.user-account'
+    >;
+    rating: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rating.rating',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSubcategorySubcategory extends Schema.CollectionType {
   collectionName: 'subcategories';
   info: {
@@ -958,6 +999,11 @@ export interface ApiUserAccountUserAccount extends Schema.CollectionType {
       'oneToMany',
       'api::bot.bot'
     >;
+    ratings: Attribute.Relation<
+      'api::user-account.user-account',
+      'oneToMany',
+      'api::rating.rating'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -996,6 +1042,7 @@ declare module '@strapi/types' {
       'api::bot.bot': ApiBotBot;
       'api::category.category': ApiCategoryCategory;
       'api::chain.chain': ApiChainChain;
+      'api::rating.rating': ApiRatingRating;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::user-account.user-account': ApiUserAccountUserAccount;
     }

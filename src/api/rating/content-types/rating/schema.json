@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ratings",
+  "info": {
+    "singularName": "rating",
+    "pluralName": "ratings",
+    "displayName": "rating"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bot": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::bot.bot",
+      "inversedBy": "ratings"
+    },
+    "user_account": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::user-account.user-account",
+      "inversedBy": "ratings"
+    },
+    "rating": {
+      "type": "integer"
+    }
+  }
+}

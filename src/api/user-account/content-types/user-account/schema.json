@@ -26,6 +26,12 @@
       "relation": "oneToMany",
       "target": "api::bot.bot",
       "mappedBy": "user_account"
+    },
+    "ratings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::rating.rating",
+      "mappedBy": "user_account"
     }
   }
 }
