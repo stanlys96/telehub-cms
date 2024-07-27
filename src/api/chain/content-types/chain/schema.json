@@ -15,14 +15,14 @@
     "name": {
       "type": "string"
     },
-    "chainId": {
-      "type": "integer"
-    },
     "bots": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::bot.bot",
       "mappedBy": "chain"
+    },
+    "chainId": {
+      "type": "string"
     }
   }
 }

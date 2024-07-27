@@ -892,8 +892,8 @@ export interface ApiChainChain extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    chainId: Attribute.Integer;
     bots: Attribute.Relation<'api::chain.chain', 'oneToMany', 'api::bot.bot'>;
+    chainId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
