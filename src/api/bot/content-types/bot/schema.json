@@ -79,9 +79,9 @@
     },
     "reports": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::report.report",
-      "mappedBy": "bots"
+      "mappedBy": "bot"
     }
   }
 }

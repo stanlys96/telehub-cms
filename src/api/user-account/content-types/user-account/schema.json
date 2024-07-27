@@ -35,9 +35,9 @@
     },
     "reports": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "oneToMany",
       "target": "api::report.report",
-      "mappedBy": "user_accounts"
+      "mappedBy": "user_account"
     }
   }
 }

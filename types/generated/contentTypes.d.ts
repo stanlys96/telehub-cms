@@ -832,7 +832,7 @@ export interface ApiBotBot extends Schema.CollectionType {
     >;
     reports: Attribute.Relation<
       'api::bot.bot',
-      'manyToMany',
+      'oneToMany',
       'api::report.report'
     >;
     createdAt: Attribute.DateTime;
@@ -954,19 +954,16 @@ export interface ApiReportReport extends Schema.CollectionType {
     singularName: 'report';
     pluralName: 'reports';
     displayName: 'report';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    bots: Attribute.Relation<
+    bot: Attribute.Relation<'api::report.report', 'manyToOne', 'api::bot.bot'>;
+    user_account: Attribute.Relation<
       'api::report.report',
-      'manyToMany',
-      'api::bot.bot'
-    >;
-    user_accounts: Attribute.Relation<
-      'api::report.report',
-      'manyToMany',
+      'manyToOne',
       'api::user-account.user-account'
     >;
     description: Attribute.Text;
@@ -1052,7 +1049,7 @@ export interface ApiUserAccountUserAccount extends Schema.CollectionType {
     >;
     reports: Attribute.Relation<
       'api::user-account.user-account',
-      'manyToMany',
+      'oneToMany',
       'api::report.report'
     >;
     createdAt: Attribute.DateTime;

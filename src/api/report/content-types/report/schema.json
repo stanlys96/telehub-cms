@@ -4,22 +4,23 @@
   "info": {
     "singularName": "report",
     "pluralName": "reports",
-    "displayName": "report"
+    "displayName": "report",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "bots": {
+    "bot": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::bot.bot",
       "inversedBy": "reports"
     },
-    "user_accounts": {
+    "user_account": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::user-account.user-account",
       "inversedBy": "reports"
     },
