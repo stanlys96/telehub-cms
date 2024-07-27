@@ -64,6 +64,9 @@
       "relation": "manyToOne",
       "target": "api::user-account.user-account",
       "inversedBy": "bots"
+    },
+    "username": {
+      "type": "string"
     }
   }
 }

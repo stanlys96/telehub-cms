@@ -823,6 +823,7 @@ export interface ApiBotBot extends Schema.CollectionType {
       'manyToOne',
       'api::user-account.user-account'
     >;
+    username: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
