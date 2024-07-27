@@ -824,6 +824,7 @@ export interface ApiBotBot extends Schema.CollectionType {
       'api::user-account.user-account'
     >;
     username: Attribute.String;
+    published: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
