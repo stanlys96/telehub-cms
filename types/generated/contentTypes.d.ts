@@ -803,7 +803,7 @@ export interface ApiBotBot extends Schema.CollectionType {
     title: Attribute.String;
     members: Attribute.String;
     reviews: Attribute.String;
-    description: Attribute.String;
+    description: Attribute.Text;
     score: Attribute.Integer;
     subcategory: Attribute.Relation<
       'api::bot.bot',
