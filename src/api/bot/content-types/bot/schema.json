@@ -82,6 +82,9 @@
       "relation": "oneToMany",
       "target": "api::report.report",
       "mappedBy": "bot"
+    },
+    "imageUrl": {
+      "type": "string"
     }
   }
 }
