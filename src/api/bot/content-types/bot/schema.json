@@ -85,6 +85,9 @@
     },
     "imageUrl": {
       "type": "string"
+    },
+    "theCategory": {
+      "type": "string"
     }
   }
 }

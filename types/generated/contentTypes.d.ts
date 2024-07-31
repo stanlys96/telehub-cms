@@ -836,6 +836,7 @@ export interface ApiBotBot extends Schema.CollectionType {
       'api::report.report'
     >;
     imageUrl: Attribute.String;
+    theCategory: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::bot.bot', 'oneToOne', 'admin::user'> &
